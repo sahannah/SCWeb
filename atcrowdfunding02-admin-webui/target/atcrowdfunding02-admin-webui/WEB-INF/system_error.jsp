@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zhanghan
-  Date: 2021/1/19
-  Time: 9:36 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -23,10 +16,10 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("button").click(function () {
-                //相当于后退
-                window.history.back();
-            });
+           $("button").click(function () {
+               //相当于后退
+              window.history.back();
+           });
         });
     </script>
     <style>
@@ -51,7 +44,7 @@
         requestScope.exception == request.getAttribute("exception")
         requestScope.exception.message == exception.getMessage（）
     --%>
-    <h3>${requestScope.exception.message }</h3>
+    ${requestScope.exception.message}
     <button style="width:150px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">点我返回上一步</button>
 
 </div>

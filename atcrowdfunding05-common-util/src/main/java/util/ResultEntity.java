@@ -3,7 +3,7 @@ package util;
 public class ResultEntity<T> {
 
     public static final String SUCCESS = "SUCCESS";
-    public static final String FAILED = "SUCCESS";
+    public static final String FAILED = "FAILED";
     //封装当前请求处理结果
     private String result;
     //请求处理失败时的错误消息

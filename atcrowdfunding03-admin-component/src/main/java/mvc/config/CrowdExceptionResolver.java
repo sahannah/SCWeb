@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import util.CrowdUtil;
 import util.ResultEntity;
+import exception.LoginFailedException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,12 @@ public class CrowdExceptionResolver {
 
     @ExceptionHandler(value = ArithmeticException.class)
     public ModelAndView resolveArithmeticException(ArithmeticException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "system_error";
+        return commonResolve(viewName,exception,request,response);
+    }
+
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveLoginFailedException(LoginFailedException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "system_error";
         return commonResolve(viewName,exception,request,response);
     }
