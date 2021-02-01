@@ -1,13 +1,30 @@
 -------------------------------------------------------------------------------
 Test set: com.atguigu.crowd.test.CrowdTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.222 s <<< FAILURE! - in com.atguigu.crowd.test.CrowdTest
-testConnection(com.atguigu.crowd.test.CrowdTest)  Time elapsed: 0.002 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [spring-persist-mybatis.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding02-admin-webui/target/classes/mybatis/mapper/AdminMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.atguigu.crowd.com.atguigu.crowd.entity.Admin'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
-Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding02-admin-webui/target/classes/mybatis/mapper/AdminMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.atguigu.crowd.com.atguigu.crowd.entity.Admin'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.atguigu.crowd.com.atguigu.crowd.entity.Admin'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
-Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.atguigu.crowd.com.atguigu.crowd.entity.Admin'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
-Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.atguigu.crowd.com.atguigu.crowd.entity.Admin'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
-Caused by: java.lang.ClassNotFoundException: Cannot find class: com.atguigu.crowd.com.atguigu.crowd.entity.Admin
+Tests run: 5, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.624 s <<< FAILURE! - in com.atguigu.crowd.test.CrowdTest
+testInsertAdmin(com.atguigu.crowd.test.CrowdTest)  Time elapsed: 0.094 s  <<< ERROR!
+org.springframework.dao.DuplicateKeyException: 
+
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'tom' for key 'login_acct_UNIQUE'
+### The error may involve mapper.AdminMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into t_admin (id, login_acct, user_pswd,        user_name, email, create_time       )     values (?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'tom' for key 'login_acct_UNIQUE'
+; SQL []; Duplicate entry 'tom' for key 'login_acct_UNIQUE'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'tom' for key 'login_acct_UNIQUE'
+	at com.atguigu.crowd.test.CrowdTest.testInsertAdmin(CrowdTest.java:60)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'tom' for key 'login_acct_UNIQUE'
+	at com.atguigu.crowd.test.CrowdTest.testInsertAdmin(CrowdTest.java:60)
+
+test(com.atguigu.crowd.test.CrowdTest)  Time elapsed: 0.032 s  <<< ERROR!
+org.springframework.dao.DuplicateKeyException: 
+
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'loginAcct0' for key 'login_acct_UNIQUE'
+### The error may involve mapper.AdminMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into t_admin (id, login_acct, user_pswd,        user_name, email, create_time       )     values (?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'loginAcct0' for key 'login_acct_UNIQUE'
+; SQL []; Duplicate entry 'loginAcct0' for key 'login_acct_UNIQUE'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'loginAcct0' for key 'login_acct_UNIQUE'
+	at com.atguigu.crowd.test.CrowdTest.test(CrowdTest.java:34)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'loginAcct0' for key 'login_acct_UNIQUE'
+	at com.atguigu.crowd.test.CrowdTest.test(CrowdTest.java:34)
 

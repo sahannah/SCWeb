@@ -1,2 +1,8 @@
-/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/com/atguigu/crowd/entity/Admin.java
-/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/com/atguigu/crowd/entity/AdminExample.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/AdminExample.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/ParamData.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/Role.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/Student.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/Admin.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/RoleExample.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/Subject.java
+/Users/zhanghan/IdeaProjects/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/src/main/java/entity/Address.java

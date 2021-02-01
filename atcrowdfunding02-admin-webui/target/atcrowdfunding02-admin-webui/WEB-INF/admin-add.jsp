@@ -36,7 +36,7 @@
                             <input name="userPswd" type="text" class="form-control" id="exampleInputPassword2" placeholder="请输入登陆密码">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">用户名称</label>
+                            <label for="exampleInputPassword1">用户昵称</label>
                             <input name="userName" type="text" class="form-control" id="exampleInputPassword3" placeholder="请输入用户名称">
                         </div>
                         <div class="form-group">

@@ -44,7 +44,7 @@
             enableCountByExample、enableSelectByExample、enableDeleteByExample、enableUpdateByExample、selectByExampleQueryId：
             去除自动生成的例子
         -->
-        <table schema="" tableName="t_admin"  domainObjectName = "Admin"/>
+        <table schema="" tableName="t_menu"  domainObjectName = "Menu"/>
 
     </context>
 </generatorConfiguration>

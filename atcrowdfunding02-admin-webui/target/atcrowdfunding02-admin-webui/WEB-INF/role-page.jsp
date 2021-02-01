@@ -53,6 +53,7 @@
                     if (result == "FAILED") {
                         layer.msg("操作失败！" + response.message)
                     }
+                    window.pageNum = 999999;
                     // 重新加载分页
                     generatePage();
                 },
@@ -90,7 +91,7 @@
         $("#updateRoleBtn").click(function () {
             // ①从文本框中获取新的角色名称
             var roleName = $("#editModal [name=roleName]").val();
-// ②发送 Ajax 请求执行更新
+            // ②发送 Ajax 请求执行更新
             $.ajax({
                 "url": "role/update.json",
                 "type": "post",
@@ -103,7 +104,7 @@
                     var result = response.result;
                     if (result == "SUCCESS") {
                         layer.msg("操作成功！");
-// 重新加载分页数据
+                   // 重新加载分页数据
                         generatePage();
                     }
                     if (result == "FAILED") {
@@ -114,7 +115,7 @@
                     layer.msg(response.status + " " + response.statusText);
                 }
             });
-// ③关闭模态框
+          // ③关闭模态框
             $("#editModal").modal("hide");
         });
         // 8.点击确认模态框中的确认删除按钮执行删除

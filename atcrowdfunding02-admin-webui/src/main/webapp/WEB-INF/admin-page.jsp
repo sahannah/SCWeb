@@ -29,7 +29,7 @@
             callback: pageSelectCallBack,
             items_per_page:${requestScope.pageInfo.pageSize }, //每页显示1项
             current_page: ${requestScope.pageInfo.pageNum - 1 }, //当前页数pageIndex从0开始
-            prex_text: "上一页",
+            prev_text: "上一页",
             next_text: "下一页"
         }
         // 生成页码导航条
@@ -60,7 +60,7 @@
                     <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 数据列表</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="admin/get/page.html" class="form-inline" role="form" style="float:left;">
+                    <form action="admin/get/page.html" method="post" class="form-inline" role="form" style="float:left;">
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>

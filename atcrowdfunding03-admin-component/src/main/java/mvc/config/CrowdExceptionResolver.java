@@ -2,6 +2,8 @@ package mvc.config;
 
 
 import com.google.gson.Gson;
+import exception.LoginAcctAlreadyInUse;
+import exception.LoginAcctAlreadyInUseForUpdate;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +20,19 @@ import java.io.IOException;
 public class CrowdExceptionResolver {
 
     //@ExceptionHandler将一个具体的异常类和一个方法映射
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdate.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "system_error";
+        return commonResolve(viewName,exception,request,response);
+    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUse.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "admin-add";
+        return commonResolve(viewName,exception,request,response);
+    }
+
     @ExceptionHandler(value = NullPointerException.class)
     public ModelAndView resolveNullPointerException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "system_error";

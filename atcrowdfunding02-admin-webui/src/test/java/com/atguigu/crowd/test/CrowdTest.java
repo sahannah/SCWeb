@@ -1,7 +1,9 @@
 package com.atguigu.crowd.test;
 
 import entity.Admin;
+import entity.Role;
 import mapper.AdminMapper;
+import mapper.RoleMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,6 +28,17 @@ public class CrowdTest {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Test
+    public void testRoleSave(){
+        for(int i = 0; i<235; i++){
+            roleMapper.insert(new Role(null,"role"+i));
+        }
+    }
+
 
 
     @Test

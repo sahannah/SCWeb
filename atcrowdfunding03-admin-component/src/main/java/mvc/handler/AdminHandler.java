@@ -6,16 +6,57 @@ import entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.api.AdminService;
 
 import javax.servlet.http.HttpSession;
+import java.nio.file.Path;
 
 @Controller
 public class AdminHandler {
     @Autowired
     private AdminService adminService;
+
+
+    @RequestMapping("admin/update.html")
+    public String update(Admin admin, @RequestParam("pageNum") Integer pageNum,@RequestParam("keyword") String keyword){
+        adminService.update(admin);
+        return"redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+    }
+
+    @RequestMapping("/admin/to/edit/page.html")
+    public String toEditPage(
+            @RequestParam("adminId") Integer adminId,
+
+            ModelMap modelMap ){
+
+        Admin admin = adminService.getAdminById(adminId);
+        modelMap.addAttribute("admin", admin);
+
+        return "admin-edit";
+    }
+
+
+    @RequestMapping("/admin/save.html")
+    public String save(Admin admin){
+        adminService.saveAdmin(admin);
+        return "redirect:/admin/get/page.html?pageNum="+Integer.MAX_VALUE;
+    }
+
+    @RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
+    public String remove(
+            @PathVariable("adminId") Integer adminId,
+            @PathVariable("pageNum") Integer pageNum,
+            @PathVariable("keyword") String keyword,
+            HttpSession session
+    ){
+
+        adminService.remove(adminId);
+
+        return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+    }
 
     @RequestMapping("/admin/get/page.html")
     public String getPageInfo(

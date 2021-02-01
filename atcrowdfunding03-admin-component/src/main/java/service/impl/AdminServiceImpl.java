@@ -5,14 +5,19 @@ import com.github.pagehelper.PageInfo;
 import constant.CrowdConstant;
 import entity.Admin;
 import entity.AdminExample;
+import exception.LoginAcctAlreadyInUse;
+import exception.LoginAcctAlreadyInUseForUpdate;
 import exception.LoginFailedException;
 import mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import service.api.AdminService;
 import util.CrowdUtil;
 
 import java.net.CacheRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,8 +29,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveAdmin(Admin admin) {
-        adminMapper.insert(admin);
+        String userPswd = admin.getUserPswd();
+        userPswd = CrowdUtil.md5(userPswd);
+        admin.setUserPswd(userPswd);
 
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+        String createTime = format.format(date);
+        admin.setCreateTime(createTime);
+
+        try {
+            adminMapper.insert(admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof DuplicateKeyException){
+                throw new LoginAcctAlreadyInUse(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+        }
     }
 
     @Override
@@ -63,5 +83,29 @@ public class AdminServiceImpl implements AdminService {
         PageHelper.startPage(pageNum,pageSize);
         List<Admin> list = adminMapper.selectAdminByKeyword(keyword);
         return new PageInfo<>(list);
+    }
+
+    @Override
+    public void remove(Integer adminId) {
+        adminMapper.deleteByPrimaryKey(adminId);
+
+    }
+
+    @Override
+    public Admin getAdminById(Integer adminId) {
+        return adminMapper.selectByPrimaryKey(adminId);
+    }
+
+    @Override
+    public void update(Admin admin) {
+        try {
+            adminMapper.updateByPrimaryKeySelective(admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof DuplicateKeyException){
+                throw new LoginAcctAlreadyInUseForUpdate(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+        }
+
     }
 }
